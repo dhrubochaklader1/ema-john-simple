@@ -1,20 +1,23 @@
 .header {
-    height: 80px;
-    background-color: #1C2B35;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 140px;
-    padding-right: 140px;
+  height: 80px;
+  background-color: #1c2b35;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 140px;
+  padding-right: 140px;
 }
 
 nav a {
-    color: #FFFFFF;
-    text-decoration: none;
-    padding: 20px;
-    margin-left: 36px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 20px;
+  margin-left: 36px;
 }
 
 nav a:hover {
-    color: orange;
+  color: orange;
+}
+.btn-logout {
+  margin-left: 10px;
 }

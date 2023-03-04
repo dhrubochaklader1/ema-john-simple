@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext } from "react";
 
 const About = () => {
-    return (
-        <div>
-            <h1>This is about</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1>This is about</h1>
+    </div>
+  );
 };
 
 export default About;

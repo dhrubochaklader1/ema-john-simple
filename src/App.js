@@ -1,11 +1,15 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './App.css';
-import About from './components/About/About';
-import Inventory from './components/Inventory/Inventory';
-import Orders from './components/Orders/Orders';
-import Shop from './components/Shop/Shop';
-import Main from './layout/Main';
-import { productsAndCartLoader } from './loaders/productsAndCartLoader';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import About from "./components/About/About";
+import Inventory from "./components/Inventory/Inventory";
+import Login from "./components/Login/Login";
+import Orders from "./components/Orders/Orders";
+import Shipping from "./components/Shipping/Shipping";
+import Shop from "./components/Shop/Shop";
+import SignUp from "./components/SignUp/SignUp";
+import Main from "./layout/Main";
+import { productsAndCartLoader } from "./loaders/productsAndCartLoader";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,24 +18,44 @@ function App() {
       element: <Main></Main>,
       children: [
         {
-          path: '/',
+          path: "/",
           loader: () => fetch("products.json"),
-          element: <Shop></Shop>
+          element: <Shop></Shop>,
         },
         {
-          path: '/orders',
+          path: "/orders",
           loader: productsAndCartLoader,
-          element: <Orders></Orders>
+          element: <Orders></Orders>,
         },
         {
-          path: '/inventory',
-          element: <Inventory></Inventory>
+          path: "/inventory",
+          element: (
+            <PrivateRoute>
+              <Inventory></Inventory>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/shipping",
+          element: (
+            <PrivateRoute>
+              <Shipping></Shipping>
+            </PrivateRoute>
+          ),
         },
         {
           path: "/about",
-          element: <About></About>
+          element: <About></About>,
         },
-      ]
+        {
+          path: "/login",
+          element: <Login></Login>,
+        },
+        {
+          path: "/signup",
+          element: <SignUp></SignUp>,
+        },
+      ],
     },
   ]);
   return (
